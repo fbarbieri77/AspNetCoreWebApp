@@ -42,6 +42,8 @@ namespace AspNetCoreWebApp.Pages
             }
             Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
             Movie = await movies.ToListAsync();
+
+
         }
     }
 }
