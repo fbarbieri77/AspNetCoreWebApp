@@ -1,15 +1,20 @@
 using AspNetCoreWebApp.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
 namespace AspNetCoreWebApp.Pages
 {
-
+    //[Authorize]
+    [DisableRequestSizeLimit]
+    //[RequestSizeLimit(268435456)]
+//    [RequestFormLimits(ValueLengthLimit = 268435456, MultipartBodyLengthLimit = 268435456, MultipartHeadersLengthLimit = 268435456)]
+    [RequestFormLimits(MultipartBodyLengthLimit = 268435456)]
     public class SmallFileUploadBufferedModel : PageModel
     {
         private readonly long _fileSizeLimit;
-        private readonly string[] _permittedExtensions = { ".txt", ".mp4", ".mkv", ".jpg" };
+        private readonly string[] _permittedExtensions = { ".txt", ".mp4", ".mkv", ".jpg", ".zip" };
         private readonly string _targetFilePath;
 
         public SmallFileUploadBufferedModel(IConfiguration config)
@@ -92,6 +97,5 @@ namespace AspNetCoreWebApp.Pages
         [Display(Name = "Note")]
         [StringLength(50, MinimumLength = 0)]
         public string? Note { get; set; }
-        }
     }
 }

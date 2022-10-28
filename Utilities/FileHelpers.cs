@@ -48,6 +48,16 @@ namespace AspNetCoreWebApp.Utilities
                     new byte[] { 0x57, 0x69, 0x6E, 0x5A, 0x69, 0x70 },
                 }
             },
+            { ".mp4", new List<byte[]>
+                {
+                    new byte[] { 0x00, 0x00, 0x00, 0x20 },
+                }
+            },
+            { ".mkv", new List<byte[]>
+                {
+                    new byte[] { 0x1A, 0x45, 0xDF, 0xA3},
+                }
+            },
         };
 
         // **WARNING!**
